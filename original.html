@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Aero ID - Campus Logo Update</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #ff4d4d;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            background: #0f0f1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .bg-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary-red);
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            animation: move 12s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-150px, -150px); }
+            to { transform: translate(150px, 150px); }
+        }
+
+        .id-card {
+            width: 380px;
+            height: 480px; 
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden; 
+        }
+
+        /* --- THE CAMPUS LOGO CONTAINER --- */
+        .campus-logo-container {
+            position: absolute;
+            top: 25px; /* Adjust top positioning */
+            right: 25px; /* Adjust right positioning */
+            z-index: 5; /* Ensures it sits above other card contents */
+        }
+
+        .campus-logo {
+            max-width: 60px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 8px; /* Optional: adds subtle rounding to the logo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds subtle depth */
+        }
+
+        .profile-img-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 25px;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+            margin-top: 20px; /* Slight adjustment to clear the new logo area */
+        }
+
+        .name { font-size: 1.8rem; font-weight: 600; margin: 15px 0 5px; }
+        .stream {
+            font-size: 0.75rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 1px solid var(--glass-border);
+            text-align: left;
+        }
+
+        .label { font-size: 0.6rem; color: #aaa; text-transform: uppercase; }
+        .value { font-size: 0.8rem; }
+
+        .bio-overlay {
+            position: absolute;
+            bottom: -100%; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: left;
+            z-index: 10;
+        }
+
+        .bio-overlay.active {
+            bottom: 0;
+        }
+
+        .full-name { color: var(--primary-red); font-weight: 600; margin-bottom: 10px; }
+        .bio-text { font-size: 0.9rem; line-height: 1.6; color: #ddd; }
+
+        .bio-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            background: var(--glass-border);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+            z-index: 20;
+        }
+
+        .bio-btn:hover { background: var(--primary-red); }
+        .bio-btn svg { width: 18px; color: white; }
+
+        .close-btn {
+            margin-top: 20px;
+            color: var(--primary-red);
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob"></div>
+
+    <div class="id-card">
+        <div class="campus-logo-container">
+            <img src="https://th.bing.com/th/id/OIP.DVVMjBAa6P-3ZG0yyz1CWAHaHa?w=169&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Campus Logo" class="campus-logo">
+        </div>
+
+        <div class="profile-img-container">
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1XvfQi.img?w=800&h=435&q=60&m=2&f=jpg" alt="Profile">
+        </div>
+
+        <div class="name">Kylie Jenner</div>
+        <span class="stream">Computer Science & Engineering</span>
+
+        <div class="details-grid">
+            <div><div class="label">Student ID</div><div class="value">#2005-SLPP</div></div>
+            <div><div class="label">NIC</div><div class="value">1997296153801</div></div>
+            <div><div class="label">Issue Date</div><div class="value">Sept 2018</div></div>
+            <div><div class="label">Address</div><div class="value">No.23 Los Angeles, California</div></div>
+        </div>
+
+        <div class="bio-overlay" id="bioOverlay">
+            <div class="full-name">Kylie Jenner</div>
+            <p class="bio-text">
+                Passionate about large-scale infrastructure development and strategic engineering. 
+                Dedicated to building resilient systems and navigating complex project lifecycles 
+                with a focus on long-term sustainability and AI integration.
+            </p>
+            <div class="close-btn" onclick="toggleBio()">✕ Close Bio</div>
+        </div>
+
+        <div class="bio-btn" onclick="toggleBio()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 16h.01M12 8h.01M11 12h1a1 1 0 011 1v3a1 1 0 01-1 1h-1a1 1 0 01-1-1v-3a1 1 0 011-1z"/>
+                <circle cx="12" cy="12" r="10"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function toggleBio() {
+            const overlay = document.getElementById('bioOverlay');
+            overlay.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
